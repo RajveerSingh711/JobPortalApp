@@ -12,7 +12,24 @@ build/
 # System files
 .DS_Store
 Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
 
 # Environment files
 .env
 config.json
+
+# Package managers lock files
+yarn.lock
+pnpm-lock.yaml
+
+# Test coverage
+coverage/
+
+# Caches
+*.cache
