@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../shared/Navbar";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { RadioGroup } from "../ui/radio-group";
 import { useState } from "react";
+import { toast } from "sonner";
+import axios from "axios";
+import { USER_API_END_POINT } from "@/utils/constant";
 
 const Login = () => {
   const [input, setInput] = useState({
@@ -12,19 +15,14 @@ const Login = () => {
     password: "",
     role: "",
   });
-
+  const navigate = useNavigate();
   const changeEventHandler = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
   const submitHandler = async (e) => {
     e.preventDefault();
-    // const formData = new FormData();
-    // formData.append("email", input.email);
-    // formData.append("password", input.password);
-    // formData.append("role", input.role);
-
     try {
-      const res = await axios.post(`${USER_API_END_POINT}/login`, formData, {
+      const res = await axios.post(`${USER_API_END_POINT}/login`, input, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -32,7 +30,7 @@ const Login = () => {
       });
       if (res.data.success) {
         navigate("/");
-        toast.success(res.data.success);
+        toast.success(res.data.message);
       }
     } catch (error) {
       console.log(error);
