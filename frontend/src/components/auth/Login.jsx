@@ -73,7 +73,7 @@ const Login = () => {
               value={input.password}
               name="password"
               onChange={changeEventHandler}
-              placeholder="abc123"
+              placeholder="abcd1234"
             />
           </div>
           <div className="flex items-center justify-between">
